@@ -1,0 +1,13 @@
+torch
+transformers 
+langchain 
+sentence-transformers
+tqdm 
+openpyxl
+pandas
+datasets
+langchain-community
+ragatouille
+ipykernel
+ipywidgets
+python-dotenv
