@@ -1,17 +1,17 @@
 import streamlit as st
 import pdfplumber
 import markdown
-import faiss
+#import faiss
 import numpy as np
 
-from tqdm.auto import tqdm
-import pandas as pd
-from typing import Optional, List, Tuple
+#from tqdm.auto import tqdm
+#import pandas as pd
+#from typing import Optional, List, Tuple
 import json
-import datasets
+#import datasets
 import os
 import re
-import torch
+#import torch
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from transformers import AutoTokenizer
@@ -19,12 +19,12 @@ from langchain.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores.utils import DistanceStrategy
 from langchain_community.llms import HuggingFaceHub
-from ragatouille import RAGPretrainedModel
+#from ragatouille import RAGPretrainedModel
 from langchain_core.vectorstores import VectorStore
 from langchain_core.language_models.llms import LLM
 from langchain.document_loaders import PyPDFLoader, UnstructuredMarkdownLoader, UnstructuredHTMLLoader  # Assumes both loaders exist
 from langchain.schema import Document
-from langchain_core.language_models import BaseChatModel
+#from langchain_core.language_models import BaseChatModel
 
 ######################## GLOBAL STUFF ########################
 DEFAULT_QUESTIONS = [
@@ -134,7 +134,7 @@ def split_documents(chunk_size: int, knowledge_base: List[Document],tokenizer_na
 
 # Method to load embeddins and create vectore store
 def load_embeddings(langchain_docs, chunk_size, embedding_model_name: Optional[str] = "thenlper/gte-small",) -> FAISS:
-
+    print('Loading the Embeddings...')
     embedding_model = HuggingFaceEmbeddings(
         model_name=embedding_model_name,
         multi_process=True,
