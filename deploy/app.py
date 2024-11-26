@@ -223,8 +223,7 @@ def score_syllabus(results):
 st.title("Syllabus Evaluation App")
 
 uploaded_file = st.file_uploader("Upload your syllabus (PDF or Markdown):", type=["pdf", "md", "html"])
-with open(uploaded_file.name, mode='wb') as w:
-        w.write(uploaded_file.getvalue())
+
 print(f"Uploaded file type: {type(uploaded_file)}")
 # LLM model selection
 selected_model = st.selectbox(
@@ -245,6 +244,8 @@ if st.button("Save Questions"):
 if uploaded_file and st.button("Upload and Process Syllabus"):
     with st.spinner('Processing syllabus...'):
     # Process input file in langchain
+        with open(uploaded_file.name, mode='wb') as w:
+            w.write(uploaded_file.getvalue())
         docs_processed = load_documents(uploaded_file.name)
         # Split into chunks, load embeddings
         knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
