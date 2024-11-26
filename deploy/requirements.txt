@@ -1,0 +1,14 @@
+streamlit
+pdfplumber
+markdown
+faiss-cpu
+numpy
+tqdm
+pandas
+torch
+datasets
+transformers
+langchain
+langchain-community
+langchain-core
+ragatouille
