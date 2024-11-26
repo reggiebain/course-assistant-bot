@@ -97,6 +97,7 @@ def get_llm(selected_model):
     else:
         st.error("Unsupported model selected.")
         return None
+    print("\n\n Here is where we load the HuggingFAce HUb stuff \n\n")
     reader_llm = HuggingFaceHub(
         repo_id=repo_id,
         task="text-generation", 
