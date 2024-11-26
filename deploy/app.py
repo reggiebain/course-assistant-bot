@@ -91,7 +91,6 @@ def load_documents(file):
 
 # Function to get the selected LLM
 def get_llm(selected_model):
-    ["Zephyr-7b", "Llama-3.1-8B"]
     if selected_model == "Zephyr-7b":
         repo_id = "HuggingFaceH4/zephyr-7b-beta"  # Replace with your OpenAI API key in `.env`
     elif selected_model == "Llama-3.1-8B":
