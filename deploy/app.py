@@ -73,13 +73,13 @@ def extract_text_from_markdown(file):
 
 # Takes in streamlit loaded file with extension -> documents
 def load_documents(file):
-    if file.name.endswith('.pdf') == 'pdf':
+    if file.name.endswith('.pdf'):
         loader = PyPDFLoader(file.name)
         print("Loading PDF document...")
-    elif file.name.endswith('.md') == 'md':
+    elif file.name.endswith('.md'):
         loader = UnstructuredMarkdownLoader(file.name)
         print("Loading Markdown document...")
-    elif file.name.endswith('.html') == 'html':
+    elif file.name.endswith('.html'):
         loader = UnstructuredHTMLLoader(file)
         print("Loading HTML file...")
     else:
@@ -240,7 +240,7 @@ questions = st.text_area(
 if st.button("Save Questions"):
     st.success("Questions updated!")
 
-if uploaded_file and st.button("Upload Syllabus"):
+if uploaded_file and st.button("Upload and Process Syllabus"):
     with st.spinner('Processing syllabus...'):
     # Process input file in langchain
         docs_processed = load_documents(uploaded_file)
