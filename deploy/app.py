@@ -19,7 +19,7 @@ from langchain.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores.utils import DistanceStrategy
 from langchain_community.llms import HuggingFaceHub
-#from ragatouille import RAGPretrainedModel
+from ragatouille import RAGPretrainedModel
 from langchain_core.vectorstores import VectorStore
 from langchain_core.language_models.llms import LLM
 from langchain.document_loaders import PyPDFLoader, UnstructuredMarkdownLoader, UnstructuredHTMLLoader  # Assumes both loaders exist
