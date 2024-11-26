@@ -72,15 +72,15 @@ def extract_text_from_markdown(file):
     return text
 
 # Takes in streamlit loaded file with extension -> documents
-def load_documents(file):
-    if file.name.endswith('.pdf'):
-        loader = PyPDFLoader(file.name)
+def load_documents(file_name):
+    if file_name.endswith('.pdf'):
+        loader = PyPDFLoader(file_name)
         print("Loading PDF document...")
-    elif file.name.endswith('.md'):
-        loader = UnstructuredMarkdownLoader(file.name)
+    elif file_name.endswith('.md'):
+        loader = UnstructuredMarkdownLoader(file_name)
         print("Loading Markdown document...")
-    elif file.name.endswith('.html'):
-        loader = UnstructuredHTMLLoader(file)
+    elif file_name.endswith('.html'):
+        loader = UnstructuredHTMLLoader(file_name)
         print("Loading HTML file...")
     else:
         raise ValueError("Unsupported file format. Please provide a PDF or Markdown file.")
