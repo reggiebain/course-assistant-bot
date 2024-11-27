@@ -43,15 +43,15 @@ CHUNK_SIZE = 200
 RAG_PROMPT_TEMPLATE = """
 <|system|>
 Using the information contained in the context,
-give a concise answer to the question of no more than 2-3 sentences.
-Respond only to the question asked, response should be concise and relevant to the question.
+give a comprehensive answer to the question.
+Respond only to the question asked, response should be concise (2-3 sentences) and relevant to the question.
 Provide the number of the source document when relevant.
-If the answer cannot be deduced from the context, give the answer "Cannot find answer in document".</s>
+If the answer cannot be deduced from the context, do not give an answer.</s>
 <|user|>
 Context:
 {context}
 ---
-Now here is the question you need to answer. Remember, if the answer cannot be found in the context, give the answer "Cannot find answer in document"
+Now here is the question you need to answer.
 
 Question: {question}
 </s>
@@ -74,16 +74,23 @@ def extract_text_from_markdown(file):
     return text
 
 # Takes in streamlit loaded file with extension -> documents
-def load_documents(file):
+def load_documents(uploaded_file):
+    file_name = uploaded_file.name
+    file_extension = file_name.split(".")[-1].lower()
+    
+    temp_file = './temp.' + file_extension
+    with open(temp_file, mode='wb') as file:
+        file.write(uploaded_file.getvalue())
+        file_name = uploaded_file.name
 
-    if file.endswith('.pdf'):
-        loader = PyPDFLoader(file)
+    if file_extension == '.pdf':
+        loader = PyPDFLoader(temp_file)
         print("Loading PDF document...")
-    elif file.endswith('.md'):
-        loader = UnstructuredMarkdownLoader(file)
+    elif file_extension == '.md':
+        loader = UnstructuredMarkdownLoader(temp_file)
         print("Loading Markdown document...")
-    elif file.endswith('.html'):
-        loader = UnstructuredHTMLLoader(file)
+    elif file_extension == '.html':
+        loader = UnstructuredHTMLLoader(temp_file)
         print("Loading HTML file...")
     else:
         raise ValueError("Unsupported file format. Please provide a PDF or Markdown file.")
@@ -250,23 +257,16 @@ if st.button("Save Questions"):
 
 if uploaded_file and st.button("Upload and Process Syllabus"):
     with st.spinner('Processing syllabus...'):
-        #if uploaded_file.name.endswith('.pdf'):
-        temp_file = './temp.pdf'
-        with open(temp_file, mode='wb') as file:
-            file.write(uploaded_file.getvalue())
-            file_name = uploaded_file.name
-        loader = PyPDFLoader(temp_file)
-        docs_processed = loader.load()
 
+        #temp_file = './temp.pdf'
+        #with open(temp_file, mode='wb') as file:
+        #    file.write(uploaded_file.getvalue())
+        #    file_name = uploaded_file.name
+        #loader = PyPDFLoader(temp_file)
+        #docs_processed = loader.load()
+        docs_processed = load_documents(uploaded_file)
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE)
-        text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
-            AutoTokenizer.from_pretrained("thenlper/gte-small"),
-            chunk_size=CHUNK_SIZE,
-            chunk_overlap=int(CHUNK_SIZE / 10),
-            add_start_index=True,
-            strip_whitespace=True,
-            separators=["\n\n", "\n", ".", " ", ""],
-        )
+
         texts = text_splitter.split_documents(docs_processed)
 
         embeddings = HuggingFaceEmbeddings(model_name="thenlper/gte-small")
