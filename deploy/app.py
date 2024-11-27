@@ -11,7 +11,7 @@ import json
 #import datasets
 import os
 import re
-#import torch
+import torch
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from transformers import AutoTokenizer
@@ -72,15 +72,15 @@ def extract_text_from_markdown(file):
     return text
 
 # Takes in streamlit loaded file with extension -> documents
-def load_documents(file_name):
-    if file_name.endswith('.pdf'):
-        loader = PyPDFLoader(file_name)
+def load_documents(file):
+    if file.name.endswith('.pdf'):
+        loader = PyPDFLoader(file)
         print("Loading PDF document...")
-    elif file_name.endswith('.md'):
-        loader = UnstructuredMarkdownLoader(file_name)
+    elif file.name.endswith('.md'):
+        loader = UnstructuredMarkdownLoader(file)
         print("Loading Markdown document...")
-    elif file_name.endswith('.html'):
-        loader = UnstructuredHTMLLoader(file_name)
+    elif file.name.endswith('.html'):
+        loader = UnstructuredHTMLLoader(file)
         print("Loading HTML file...")
     else:
         raise ValueError("Unsupported file format. Please provide a PDF or Markdown file.")
