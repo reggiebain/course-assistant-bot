@@ -258,13 +258,13 @@ if st.button("Save Questions"):
 if uploaded_file and st.button("Upload and Process Syllabus"):
     with st.spinner('Processing syllabus...'):
 
-        #temp_file = './temp.pdf'
-        #with open(temp_file, mode='wb') as file:
-        #    file.write(uploaded_file.getvalue())
-        #    file_name = uploaded_file.name
-        #loader = PyPDFLoader(temp_file)
-        #docs_processed = loader.load()
-        docs_processed = load_documents(uploaded_file)
+        temp_file = './temp.pdf'
+        with open(temp_file, mode='wb') as file:
+            file.write(uploaded_file.getvalue())
+            file_name = uploaded_file.name
+        loader = PyPDFLoader(temp_file)
+        docs_processed = loader.load()
+        #docs_processed = load_documents(uploaded_file)
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE)
 
         texts = text_splitter.split_documents(docs_processed)
