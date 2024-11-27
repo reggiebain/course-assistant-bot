@@ -12,6 +12,7 @@ import json
 import os
 import re
 import torch
+import tempfile
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from transformers import AutoTokenizer
@@ -75,7 +76,7 @@ def extract_text_from_markdown(file):
 def load_documents(file):
     print(f"{file=}")
     print(f"{type(file)=}")
-    loader = PyPDFLoader('./' + file)
+    loader = PyPDFLoader(file)
     if file.endswith('.pdf'):
         loader = PyPDFLoader('./' + file)
         print("Loading PDF document...")
@@ -248,9 +249,12 @@ if st.button("Save Questions"):
 if uploaded_file and st.button("Upload and Process Syllabus"):
     with st.spinner('Processing syllabus...'):
     # Process input file in langchain
+        with tempfile.NamedTemporaryFile(delete=False, suffix=uploaded_file.name.split('.')[-1]) as temp_file:
+            temp_file.write(uploaded_file.read())
+            temp_file_path = temp_file.name  # Get the path to the temporary file
         #with open(uploaded_file.name, mode='wb') as w:
         #    w.write(uploaded_file.getvalue())
-        docs_processed = load_documents(uploaded_file.name)
+        docs_processed = load_documents(temp_file_path)
         # Split into chunks, load embeddings
         knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
         st.success("File uploaded and processed!")
