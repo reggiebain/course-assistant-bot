@@ -83,13 +83,13 @@ def load_documents(uploaded_file):
         file.write(uploaded_file.getvalue())
         file_name = uploaded_file.name
 
-    if file_extension == '.pdf':
+    if file_extension == 'pdf':
         loader = PyPDFLoader(temp_file)
         print("Loading PDF document...")
-    elif file_extension == '.md':
+    elif file_extension == 'md':
         loader = UnstructuredMarkdownLoader(temp_file)
         print("Loading Markdown document...")
-    elif file_extension == '.html':
+    elif file_extension == 'html':
         loader = UnstructuredHTMLLoader(temp_file)
         print("Loading HTML file...")
     else:
