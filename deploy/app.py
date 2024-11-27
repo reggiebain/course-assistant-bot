@@ -106,7 +106,7 @@ def get_llm(selected_model):
         repo_id=repo_id,
         task="text-generation", 
         huggingfacehub_api_token=HF_TOKEN,
-        temperature=0.1,
+        #temperature=0.1,
         model_kwargs = READER_MODEL_PARAMS,
     )
     return reader_llm
