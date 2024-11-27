@@ -43,10 +43,10 @@ CHUNK_SIZE = 200
 RAG_PROMPT_TEMPLATE = """
 <|system|>
 Using the information contained in the context,
-give a comprehensive answer to the question.
+give a concise answer to the question of no more than 2-3 sentences.
 Respond only to the question asked, response should be concise and relevant to the question.
 Provide the number of the source document when relevant.
-If the answer cannot be deduced from the context, do not give an answer.</s>
+If the answer cannot be deduced from the context, give the answer "Cannot determine answer from document".</s>
 <|user|>
 Context:
 {context}
@@ -222,7 +222,7 @@ def process_questions_with_answers(questions, llm, knowledge_index):
     return results     
 
 def score_syllabus(results):
-    answered = sum(1 for result in results if result['answer'])
+    answered = sum(1 for result in results if result['answer'] != 'Cannot determine answer from document')
     score = (answered / len(questions)) * 100
     return score
 
