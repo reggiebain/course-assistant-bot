@@ -102,8 +102,8 @@ def load_documents(uploaded_file):
 def get_llm(selected_model):
     if selected_model == "Zephyr-7b":
         repo_id = "HuggingFaceH4/zephyr-7b-beta"  # Replace with your OpenAI API key in `.env`
-    elif selected_model == "Llama-3.1-8B":
-        repo_id =  'meta-llama/Llama-3.1-8B-Instruct'
+    elif selected_model == "Llama-3-8B":
+        repo_id =  'meta-llama/Meta-Llama-3-8B-Instruct'
     else:
         st.error("Unsupported model selected.")
         return None
