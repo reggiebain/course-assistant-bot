@@ -205,7 +205,7 @@ def parse_question_answer(rag_output):
         if line.startswith("Question:"):
             # Extract the question text
             question = line.replace("Question:", "").strip()
-        elif line.startswith("Answer:"):
+        elif line.startswith("<|assistant|>"):
             # Answer follows <|assistant|>, so join subsequent lines
             answer_start_index = lines.index(line) + 1
             answer = " ".join(l.strip() for l in lines[answer_start_index:])
