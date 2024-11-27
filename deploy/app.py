@@ -261,6 +261,7 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         print(f"{type(temp_file)=}")
         print('hey we did it!!!\n')
         #docs_processed = load_documents(temp_file)
+        '''
         # Split into chunks, load embeddings
         knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
         st.success("File uploaded and processed!")
@@ -275,3 +276,4 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
             st.write(f"**Q:** {result['question']}")
             st.write(f"**A:** {result['answer']}")
             st.write("---")
+            '''
