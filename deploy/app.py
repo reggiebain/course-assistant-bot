@@ -264,7 +264,7 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         texts = text_splitter.split_documents(docs_processed)
         embeddings = HuggingFaceEmbeddings(model_name="thenlper/gte-small")
         st.write(f"Embeddings loaded...")
-        #db = FAISS.from_documents(docs_processed, embedding_model, distance_strategy=DistanceStrategy.COSINE, allow_dangerous_deserialization=True)
+        knowledge_index = FAISS.from_documents(docs_processed, embeddings, distance_strategy=DistanceStrategy.COSINE, allow_dangerous_deserialization=True)
         #docs_processed = load_documents(temp_file)
         # Split into chunks, load embeddings
         #knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
