@@ -75,13 +75,13 @@ def extract_text_from_markdown(file):
 def load_documents(file):
     print(f"{file=}")
     print(f"{type(file)=}")
-    if file.name.endswith('.pdf'):
-        loader = PyPDFLoader(file)
+    if file.endswith('.pdf'):
+        loader = PyPDFLoader('./' + file)
         print("Loading PDF document...")
-    elif file.name.endswith('.md'):
+    elif file.endswith('.md'):
         loader = UnstructuredMarkdownLoader(file)
         print("Loading Markdown document...")
-    elif file.name.endswith('.html'):
+    elif file.endswith('.html'):
         loader = UnstructuredHTMLLoader(file)
         print("Loading HTML file...")
     else:
