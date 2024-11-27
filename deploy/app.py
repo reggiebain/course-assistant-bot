@@ -249,12 +249,16 @@ if st.button("Save Questions"):
 if uploaded_file and st.button("Upload and Process Syllabus"):
     with st.spinner('Processing syllabus...'):
     # Process input file in langchain
-        with tempfile.NamedTemporaryFile(delete=False, suffix=uploaded_file.name.split('.')[-1]) as temp_file:
-            temp_file.write(uploaded_file.read())
-            temp_file_path = temp_file.name  # Get the path to the temporary file
-        #with open(uploaded_file.name, mode='wb') as w:
-        #    w.write(uploaded_file.getvalue())
-        docs_processed = load_documents(temp_file_path)
+        #with tempfile.NamedTemporaryFile(delete=False, suffix=uploaded_file.name.split('.')[-1]) as temp_file:
+        #    temp_file.write(uploaded_file.read())
+        #    temp_file_path = temp_file.name  # Get the path to the temporary file
+        temp_file = './temp.pdf'
+        with open(temp_file, mode='wb') as file:
+            file.write(uploaded_file.getvalue())
+            file_name = uploaded_file.name
+        loader = PyPDFLoader(temp_file)
+        print('hey we did it!!!\n')
+        docs_processed = load_documents(file_name)
         # Split into chunks, load embeddings
         knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
         st.success("File uploaded and processed!")
