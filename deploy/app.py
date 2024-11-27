@@ -271,7 +271,7 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         st.success("File uploaded and processed!")
 
     if st.button("Evaluate Syllabus"):
-        print(f'evaluating the syllabus')
+        st.write(f'evaluating the syllabus')
         with st.spinner("Analyzing syllabus..."):
             results = process_questions_with_answers(questions, selected_model, knowledge_index)
             score = score_syllabus(results)
