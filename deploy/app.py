@@ -137,8 +137,8 @@ def split_documents(chunk_size: int, knowledge_base: List[Document],tokenizer_na
     return docs_processed_unique
 
 # Method to load embeddins and create vectore store
-def load_embeddings(langchain_docs, chunk_size, embedding_model_name: Optional[str] = "thenlper/gte-small",) -> FAISS:
-    print('Loading the Embeddings...')
+def load_embeddings(langchain_docs, chunk_size, embedding_model_name: Optional[str] = "thenlper/gte-small",):
+    st.write('Loading the Embeddings...')
     embedding_model = HuggingFaceEmbeddings(
         model_name=embedding_model_name,
         multi_process=True,
@@ -263,7 +263,7 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         print('hey we did it!!!\n')
         #docs_processed = load_documents(temp_file)
         # Split into chunks, load embeddings
-        #knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
+        knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
         st.success("File uploaded and processed!")
 
     if st.button("Evaluate Syllabus"):
