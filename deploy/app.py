@@ -258,9 +258,9 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
             file_name = uploaded_file.name
         loader = PyPDFLoader(temp_file)
         docs_processed = loader.load()
-        print(f"{temp_file=}")
-        print(f"{type(temp_file)=}")
-        print('hey we did it!!!\n')
+        st.write(f"{temp_file=}")
+        st.write(f"{type(temp_file)=}")
+        st.write(f'hey we did it!!!\n')
         #docs_processed = load_documents(temp_file)
         # Split into chunks, load embeddings
         knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
