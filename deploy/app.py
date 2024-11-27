@@ -245,9 +245,9 @@ if st.button("Save Questions"):
 if uploaded_file and st.button("Upload and Process Syllabus"):
     with st.spinner('Processing syllabus...'):
     # Process input file in langchain
-        with open(uploaded_file.name, mode='wb') as w:
-            w.write(uploaded_file.getvalue())
-        docs_processed = load_documents(uploaded_file.name)
+        #with open(uploaded_file.name, mode='wb') as w:
+        #    w.write(uploaded_file.getvalue())
+        docs_processed = load_documents(uploaded_file)
         # Split into chunks, load embeddings
         knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
         st.success("File uploaded and processed!")
