@@ -46,36 +46,18 @@ Using the information contained in the context,
 give a concise answer to the question of no more than 2-3 sentences.
 Respond only to the question asked, response should be concise and relevant to the question.
 Provide the number of the source document when relevant.
-If the answer cannot be deduced from the context, give the answer "Cannot determine answer from document".</s>
+If the answer cannot be deduced from the context, give the answer "Cannot find answer in document".</s>
 <|user|>
 Context:
 {context}
 ---
-Now here is the question you need to answer.
+Now here is the question you need to answer. Remember, if the answer cannot be found in the context, give the answer "Cannot find answer in document"
 
 Question: {question}
 </s>
 <|assistant|>
 """
-RAG_PROMPT_TEMPLATE = """
-You are an intelligent assistant tasked with answering questions about a course syllabus document. You must only provide a brief response to each question based on information explicitly found in the syllabus. If the information cannot be located in the document, respond with: "Cannot find answer in document."
 
-Syllabus Document Context:
-{context}
-
-Questions:
-{question}
-
-Instructions:
-
-For each question, search the provided syllabus context.
-If you find relevant information in the syllabus, provide a concise and accurate answer.
-If you cannot find the answer in the syllabus, explicitly respond with: "Cannot find answer in document"
-Answer Format:
-
-Question: insert question here
-Answer: insert brief answer or "Cannot find answer in document" here
-"""
 READER_MODEL_PARAMS = {"max_new_tokens": 512, "top_k": 30,"temperature": 0.1,"repetition_penalty": 1.03,}
 
 ######################### RAG PIPELINE FUNCTIONS ######################
@@ -268,10 +250,7 @@ if st.button("Save Questions"):
 
 if uploaded_file and st.button("Upload and Process Syllabus"):
     with st.spinner('Processing syllabus...'):
-    # Process input file in langchain
-        #with tempfile.NamedTemporaryFile(delete=False, suffix=uploaded_file.name.split('.')[-1]) as temp_file:
-        #    temp_file.write(uploaded_file.read())
-        #    temp_file_path = temp_file.name  # Get the path to the temporary file
+        #if uploaded_file.name.endswith('.pdf'):
         temp_file = './temp.pdf'
         with open(temp_file, mode='wb') as file:
             file.write(uploaded_file.getvalue())
@@ -280,7 +259,16 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         docs_processed = loader.load()
 
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE)
+        text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
+            AutoTokenizer.from_pretrained(tokenizer_name),
+            chunk_size=chunk_size,
+            chunk_overlap=int(chunk_size / 10),
+            add_start_index=True,
+            strip_whitespace=True,
+            separators=["\n\n", "\n", ".", " ", ""],
+        )
         texts = text_splitter.split_documents(docs_processed)
+
         embeddings = HuggingFaceEmbeddings(model_name="thenlper/gte-small")
         st.success(f"Embeddings loaded...")
         knowledge_index = FAISS.from_documents(docs_processed, embeddings, distance_strategy=DistanceStrategy.COSINE)
