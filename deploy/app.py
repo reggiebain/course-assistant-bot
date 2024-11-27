@@ -64,7 +64,7 @@ Syllabus Document Context:
 {context}
 
 Questions:
-{questions}
+{question}
 
 Instructions:
 
