@@ -214,6 +214,8 @@ def process_questions_with_answers(questions, llm, knowledge_index):
     for question in questions:
         if question:  # Ensure there is a valid question
             raw_answer =  answer_with_rag(question, llm, knowledge_index)
+            print(f"{raw_answer=}")
+            print(f"{type(raw_answer)=}")
             answer = parse_question_answer(raw_answer)
             results.append({'question': question, 'answer': answer})
     return results     
