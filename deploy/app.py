@@ -73,14 +73,16 @@ def extract_text_from_markdown(file):
 
 # Takes in streamlit loaded file with extension -> documents
 def load_documents(file):
+    print(f"{file=}")
+    print(f"{type(file)=}")
     if file.name.endswith('.pdf'):
-        loader = PyPDFLoader(file.upload_url)
+        loader = PyPDFLoader(file)
         print("Loading PDF document...")
     elif file.name.endswith('.md'):
-        loader = UnstructuredMarkdownLoader(file.upload_url)
+        loader = UnstructuredMarkdownLoader(file)
         print("Loading Markdown document...")
     elif file.name.endswith('.html'):
-        loader = UnstructuredHTMLLoader(file.upload_url)
+        loader = UnstructuredHTMLLoader(file)
         print("Loading HTML file...")
     else:
         raise ValueError("Unsupported file format. Please provide a PDF or Markdown file.")
@@ -247,7 +249,7 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
     # Process input file in langchain
         with open(uploaded_file.name, mode='wb') as w:
             w.write(uploaded_file.getvalue())
-        docs_processed = load_documents(uploaded_file)
+        docs_processed = load_documents(uploaded_file.name)
         # Split into chunks, load embeddings
         knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
         st.success("File uploaded and processed!")
