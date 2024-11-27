@@ -106,6 +106,7 @@ def get_llm(selected_model):
         repo_id=repo_id,
         task="text-generation", 
         huggingfacehub_api_token=HF_TOKEN,
+        temperature=0.1,
         model_kwargs = READER_MODEL_PARAMS,
     )
     return reader_llm
@@ -273,11 +274,19 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         st.success("File uploaded and processed!")
         llm_choice = get_llm(selected_model)
         results = process_questions_with_answers(questions, llm_choice, knowledge_index)
+        score = score_syllabus(results)
+        st.subheader(f"Results: {score:.2f}% of questions answered")
         for result in results:
             st.write(f"**Q:** {result['question']}")
             st.write(f"**A:** {result['answer']}")
             st.write("---")
-
+        json_data = json.dumps(results, indent=4)
+        st.download_button(
+            label="Download Questions and Answers as JSON",
+            data=json_data,
+            file_name="questions_and_answers.json",
+            mime="application/json",
+        )
     if st.button("Evaluate Syllabus"):
         st.write(f'evaluating the syllabus')
         with st.spinner("Analyzing syllabus..."):
