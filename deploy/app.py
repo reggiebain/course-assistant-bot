@@ -57,6 +57,25 @@ Question: {question}
 </s>
 <|assistant|>
 """
+RAG_PROMPT_TEMPLATE = """
+You are an intelligent assistant tasked with answering questions about a course syllabus document. You must only provide a brief response to each question based on information explicitly found in the syllabus. If the information cannot be located in the document, respond with: "Cannot find answer in document."
+
+Syllabus Document Context:
+{context}
+
+Questions:
+{questions}
+
+Instructions:
+
+For each question, search the provided syllabus context.
+If you find relevant information in the syllabus, provide a concise and accurate answer.
+If you cannot find the answer in the syllabus, explicitly respond with: "Cannot find answer in document"
+Answer Format:
+
+Question: {insert question here}
+Answer: {insert brief answer or "Cannot find answer in document" here}
+"""
 READER_MODEL_PARAMS = {"max_new_tokens": 512, "top_k": 30,"temperature": 0.1,"repetition_penalty": 1.03,}
 
 ######################### RAG PIPELINE FUNCTIONS ######################
@@ -74,8 +93,6 @@ def extract_text_from_markdown(file):
 
 # Takes in streamlit loaded file with extension -> documents
 def load_documents(file):
-    print(f"{file=}")
-    print(f"{type(file)=}")
     loader = PyPDFLoader(file)
     if file.endswith('.pdf'):
         loader = PyPDFLoader('./' + file)
@@ -139,7 +156,7 @@ def split_documents(chunk_size: int, knowledge_base: List[Document],tokenizer_na
 
 # Method to load embeddins and create vectore store
 def load_embeddings(langchain_docs, chunk_size, embedding_model_name: Optional[str] = "thenlper/gte-small",):
-    st.write('Loading the Embeddings...')
+
     embedding_model = HuggingFaceEmbeddings(
         model_name=embedding_model_name,
         multi_process=True,
@@ -222,7 +239,7 @@ def process_questions_with_answers(questions, llm, knowledge_index):
     return results     
 
 def score_syllabus(results):
-    answered = sum(1 for result in results if result['answer'] != 'Cannot determine answer from document')
+    answered = sum(1 for result in results if result['answer'] != 'Cannot find answer in document')
     score = (answered / len(questions)) * 100
     return score
 
@@ -261,12 +278,11 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
             file_name = uploaded_file.name
         loader = PyPDFLoader(temp_file)
         docs_processed = loader.load()
-        st.write(f"{temp_file=}")
-        st.write(f"{type(temp_file)=}")
+
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE)
         texts = text_splitter.split_documents(docs_processed)
         embeddings = HuggingFaceEmbeddings(model_name="thenlper/gte-small")
-        st.write(f"Embeddings loaded...")
+        st.success(f"Embeddings loaded...")
         knowledge_index = FAISS.from_documents(docs_processed, embeddings, distance_strategy=DistanceStrategy.COSINE)
         #docs_processed = load_documents(temp_file)
         # Split into chunks, load embeddings
@@ -287,15 +303,4 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
             file_name="questions_and_answers.json",
             mime="application/json",
         )
-    if st.button("Evaluate Syllabus"):
-        st.write(f'evaluating the syllabus')
-        with st.spinner("Analyzing syllabus..."):
-            results = process_questions_with_answers(questions, selected_model, knowledge_index)
-            score = score_syllabus(results)
-        
-        st.subheader(f"Results: {score:.2f}% of questions answered")
-        for result in results:
-            st.write(f"**Q:** {result['question']}")
-            st.write(f"**A:** {result['answer']}")
-            st.write("---")
             
