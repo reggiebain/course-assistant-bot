@@ -260,9 +260,9 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
 
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE)
         text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
-            AutoTokenizer.from_pretrained(tokenizer_name),
-            chunk_size=chunk_size,
-            chunk_overlap=int(chunk_size / 10),
+            AutoTokenizer.from_pretrained("thenlper/gte-small"),
+            chunk_size=CHUNK_SIZE,
+            chunk_overlap=int(CHUNK_SIZE / 10),
             add_start_index=True,
             strip_whitespace=True,
             separators=["\n\n", "\n", ".", " ", ""],
