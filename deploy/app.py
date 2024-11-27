@@ -75,6 +75,7 @@ def extract_text_from_markdown(file):
 def load_documents(file):
     print(f"{file=}")
     print(f"{type(file)=}")
+    loader = PyPDFLoader('./' + file)
     if file.endswith('.pdf'):
         loader = PyPDFLoader('./' + file)
         print("Loading PDF document...")
