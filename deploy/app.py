@@ -104,6 +104,8 @@ def get_llm(selected_model):
         repo_id = "HuggingFaceH4/zephyr-7b-beta"  # Replace with your OpenAI API key in `.env`
     elif selected_model == "Llama-3-8B":
         repo_id =  'meta-llama/Meta-Llama-3-8B-Instruct'
+    elif selected_model == 'Gemma-2b':    
+        repo_id = 'google/gemma-2b-it'
     else:
         st.error("Unsupported model selected.")
         return None
@@ -242,7 +244,7 @@ print(f"Uploaded file type: {type(uploaded_file)}")
 # LLM model selection
 selected_model = st.selectbox(
     "Choose an LLM for questioning your syllabus:",
-    ["Zephyr-7b", "Llama-3.1-8B"]
+    ["Zephyr-7b", "Gemma-2b", "Llama-3-8B"]
 )
 # see and edit questions
 questions = st.text_area(
