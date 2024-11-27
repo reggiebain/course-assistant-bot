@@ -228,7 +228,7 @@ def process_questions_with_answers(questions, llm, knowledge_index):
     return results     
 
 def score_syllabus(results):
-    answered = sum(1 for result in results if result['answer'] != 'Cannot find answer in document')
+    answered = sum(1 for result in results if result['answer']')
     score = (answered / len(questions)) * 100
     return score
 
