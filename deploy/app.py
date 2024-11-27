@@ -269,7 +269,8 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         # Split into chunks, load embeddings
         #knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
         st.success("File uploaded and processed!")
-        results = process_questions_with_answers(questions, selected_model, knowledge_index)
+        llm_choice = get_llm(selected_model)
+        results = process_questions_with_answers(questions, llm_choice, knowledge_index)
         for result in results:
             st.write(f"**Q:** {result['question']}")
             st.write(f"**A:** {result['answer']}")
