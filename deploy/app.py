@@ -46,7 +46,7 @@ Using the information contained in the context,
 give a comprehensive answer to the question.
 Respond only to the question asked, response should be concise (2-3 sentences) and relevant to the question.
 Provide the number of the source document when relevant.
-If the answer cannot be deduced from the context, do not give an answer.</s>
+If the answer cannot be deduced from the context, please respond "Couldn't find this answer!"</s>
 <|user|>
 Context:
 {context}
@@ -104,8 +104,6 @@ def get_llm(selected_model):
         repo_id = "HuggingFaceH4/zephyr-7b-beta"  # Replace with your OpenAI API key in `.env`
     elif selected_model == "Llama-3-8B":
         repo_id =  'meta-llama/Meta-Llama-3-8B-Instruct'
-    elif selected_model == 'Gemma-2b':    
-        repo_id = 'google/gemma-2b-it'
     else:
         st.error("Unsupported model selected.")
         return None
@@ -230,7 +228,7 @@ def process_questions_with_answers(questions, llm, knowledge_index):
     return results     
 
 def score_syllabus(results):
-    answered = sum(1 for result in results if result['answer'])
+    answered = sum(1 for result in results if result['answer'] != "Couldn't find this answer!")
     score = (answered / len(questions)) * 100
     return score
 
@@ -244,7 +242,7 @@ print(f"Uploaded file type: {type(uploaded_file)}")
 # LLM model selection
 selected_model = st.selectbox(
     "Choose an LLM for questioning your syllabus:",
-    ["Zephyr-7b", "Gemma-2b", "Llama-3-8B"]
+    ["Zephyr-7b", "Llama-3-8B"]
 )
 # see and edit questions
 questions = st.text_area(
@@ -277,7 +275,7 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         #docs_processed = load_documents(temp_file)
         # Split into chunks, load embeddings
         #knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
-        st.success("File uploaded and processed!")
+        st.success("Knowledge index created...")
         llm_choice = get_llm(selected_model)
         results = process_questions_with_answers(questions, llm_choice, knowledge_index)
         score = score_syllabus(results)
