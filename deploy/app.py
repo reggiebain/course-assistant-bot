@@ -73,8 +73,8 @@ If you find relevant information in the syllabus, provide a concise and accurate
 If you cannot find the answer in the syllabus, explicitly respond with: "Cannot find answer in document"
 Answer Format:
 
-Question: {insert question here}
-Answer: {insert brief answer or "Cannot find answer in document" here}
+Question: insert question here
+Answer: insert brief answer or "Cannot find answer in document" here
 """
 READER_MODEL_PARAMS = {"max_new_tokens": 512, "top_k": 30,"temperature": 0.1,"repetition_penalty": 1.03,}
 
@@ -93,9 +93,9 @@ def extract_text_from_markdown(file):
 
 # Takes in streamlit loaded file with extension -> documents
 def load_documents(file):
-    loader = PyPDFLoader(file)
+
     if file.endswith('.pdf'):
-        loader = PyPDFLoader('./' + file)
+        loader = PyPDFLoader(file)
         print("Loading PDF document...")
     elif file.endswith('.md'):
         loader = UnstructuredMarkdownLoader(file)
@@ -118,7 +118,7 @@ def get_llm(selected_model):
     else:
         st.error("Unsupported model selected.")
         return None
-    print("\n\n Here is where we load the HuggingFAce HUb stuff \n\n")
+
     reader_llm = HuggingFaceHub(
         repo_id=repo_id,
         task="text-generation", 
@@ -232,8 +232,8 @@ def process_questions_with_answers(questions, llm, knowledge_index):
     for question in questions:
         if question:  # Ensure there is a valid question
             raw_answer =  answer_with_rag(question, llm, knowledge_index)[0]
-            print(f"{raw_answer=}")
-            print(f"{type(raw_answer)=}")
+            #print(f"{raw_answer=}")
+            #print(f"{type(raw_answer)=}")
             answer = parse_question_answer(raw_answer)
             results.append({'question': question, 'answer': answer})
     return results     
