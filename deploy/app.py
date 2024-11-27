@@ -262,7 +262,7 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         st.write(f"{type(temp_file)=}")
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE)
         texts = text_splitter.split_documents(docs_processed)
-        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        embeddings = HuggingFaceEmbeddings(model_name="thenlper/gte-small")
         st.write(f"Embeddings loaded...")
         #db = FAISS.from_documents(docs_processed, embedding_model, distance_strategy=DistanceStrategy.COSINE, allow_dangerous_deserialization=True)
         #docs_processed = load_documents(temp_file)
