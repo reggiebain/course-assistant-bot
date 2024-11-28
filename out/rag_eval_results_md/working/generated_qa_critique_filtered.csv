@@ -1,0 +1,124 @@
+context,question,answer,source_doc,groundedness_score,groundedness_eval,relevance_score,relevance_eval,standalone_score,standalone_eval
+"layout: two-column title: Syllabus permalink: /syllabus/
+
+Term Spring 2024 Course COMP_SCI 110: Introduction to Computer Programming Prerequisites None Instructor Prof. Connor Bain (connor.bain@northwestern.edu) Lecture Time Monday, Wednesday, & Friday, 10:00am - 10:50am Lecture Location Lutkin Hall Required Materials Zero Cost Course – (All course materials are open educational resources)
+
+Please note that this syllabus is subject to change prior to March 26, 2024.
+
+Reminder: Tuesday, March 26th is a Northwestern Monday!
+
+About the Course
+
+CS 110 is meant as an introduction to the key ideas of computer programming and assumes no prior programming knowledge. In this course, we'll use the programming language Python with two goals: first, we want to give you a sense of the kinds of creative activities, both directed problem-solving and creative pursuits, that programming can support; and two, we want to introduce you to the fundamental constructs (and associated skills and techniques) of computer programming.
+
+Programming is a powerful medium for creative expression: it can be a representational medium, a tool for thinking about problems, a way of amplifying and/or communicating ideas, a means of performing complex calculations over massive datasets, and more. Being a computer scientist is not a prerequisite for creating useful or advanced programs. In fact, most people who write computer programs are not computer scientists, but rather people who occupy a range of professions. Journalists, geographers, sociologists, scientists, artists, musicians, entrepreneurs, researchers, etc., use programming languages to accomplish diverse and specialized goals. And as data and computing increasingly influence and perfuse modern life, understanding the mechanisms (and risks!) that underlie these systems is a valuable modern literacy that is likely to serve you well.","What is the course code for the Introduction to Computer Programming course?
+",COMP_SCI 110,/kaggle/input/course-bot-data/documents/cbain_syllabus.md,1.0,"The context does not provide a course code for the Introduction to Computer Programming course.
+",1.0,"The question is not relevant to the task at hand, which is to provide a rating for the usefulness of a question to ML developers building NLP applications with Hugging Face.
+
+",5.0,"The question is context-independant, as it is clear what it is asking for.
+
+"
+"https://www.northwestern.edu/counseling/
+
+https://www.northwestern.edu/religious-life/
+
+https://www.northwestern.edu/care/
+
+Course Materials and Resources
+
+Course Software
+
+As this is a programming course, we will be using some free software programs and libraries in order to write, debug, and run Python programs. Installing and configuring this software can be a huge hassle, but it is part of the process of developing your computing proficiencies. There are many ways to install Python and its associated libraries on your computer, however, we can only provide support for the methods of installation described in class during Week 1. We will try our best to support student needs, but because of the large number of students in the course, we cannot feasibly support every method of installation.
+
+Please note, you will need a computer capable of running Python 3+ in order to participate in this course. Any Windows/Mac/Linux computer from the last decade should be fine, however, you may encounter difficulties using a Chromebook, iPad, or other non-standard operating system. If you do not have access to the appropriate computing hardware, please let the course staff know as soon as possible so that we can help you make other arrangements.
+
+If you are struggling to get Python and your code editor installed, this is (alas) normal (ask any software engineer). This is also one of the reasons why we have such a big course staff: to troubleshoot individual laptop problems with students.
+
+edSTEM
+
+edSTEM is a Question-and-Answer site like Piazza/Campuswire that allows students to ask questions that can then be answered by either Course Staff or other students in the course.
+
+{:.blockquote-no-margin}
+
+To register for the course edSTEM (you will only have to do this once), please use the link on Canvas.","What is the purpose of edSTEM?
+",edSTEM is a Question-and-Answer site like Piazza/Campuswire that allows students to ask questions that can then be answered by either Course Staff or other students in the course.,/kaggle/input/course-bot-data/documents/cbain_syllabus.md,1.0,"The context does not provide any information about the purpose of edSTEM. It only explains how to register for the course edSTEM.
+
+",2.0,"This question is not directly related to NLP or the Hugging Face ecosystem, but it is still a relevant and important topic in the broader context of education and technology. The answer provided is accurate and informative.
+
+",5.0,"The question is clear and does not depend on any context. It is asking about the purpose of a specific organization, edSTEM, which is a well-known organization in the field of education. The answer can be found on the edSTEM website, and it does not require any additional information to be understood.
+
+"
+"The rough schedule of the course will be (there are some exceptions):
+
+Mondays - Lecture Day
+
+Wednesdays - Tutorial Day
+
+Fridays - Practice Day
+
+For lecture days, we'll have interactive lectures where we introduce a new topic and focus on building a core understanding. For Tutorial days, you'll work in your tutorial groups to complete an assignment during class time. On Practice+ days, we'll do a little more practice along with previewing the next components of the course.
+
+When we assign a pre-recorded lecture, students must watch the video before coming to lecture. Organizationally, some topics/modules span multiple lectures.
+
+Tutorial / Study Groups
+
+The best way to learn how to program is by writing lots of programs. To facilitate this, and to provide a more close-knit learning setting within the context of our larger class, you will each take part in weekly tutorial sessions with one of our Peer Mentors (PMs). You will sign up for a Tutorial Group at the end of the first week of class and then, each week of the quarter, you'll work with your group to complete a tutorial under the guidance of a PM/TA.
+
+By completing the tutorials, you will become familiar with the types of strategies you might use to approach problems (which will be closely related to the homework / projects), push you to write lots of programs, and help you assess what you know and don't know so that you can know when to ask for more help in lecture or in office hours.
+
+Office Hours","What days are tutorials held in the programming course?
+",Tutorials are held on Wednesdays in the programming course.,/kaggle/input/course-bot-data/documents/cbain_syllabus.md,5.0,"The context clearly states that Wednesdays are tutorial days in the programming course. The context also provides a detailed explanation of what tutorials are and how they are conducted. Therefore, the context is sufficient to unambiguously answer the question.
+
+",1.0,"This question is not related to the Hugging Face ecosystem, NLP applications, or machine learning in general. It seems to be asking about the schedule of a specific programming course, which is outside the scope of this platform.
+",5.0,"The question is context-independent as it does not refer to any specific context or document. It is clear that the question refers to a programming course, but the context of the programming course is not necessary to understand the question.
+
+"
+"The second goal of the course is to introduce you to the fundamental constructs of computer programming and how to apply these low-level constructs in creative and useful ways. Learning a programming language is not dissimilar to learning a new spoken/written language–first, you need to understand basic rules like grammar and syntax, then you need exemplar buildings blocks like adjectives, nouns, and prepositions, and only then can you use these ideas together to create computer programs. What this means is that you must dedicate enough time to practicing the basics in order to allow yourself to progressively move to more and more complex programming practice.
+
+Taking this course means committing — for 10 weeks — to attending lectures, tutorials, and office hours, turning in assignments / projects, doing (lots of) practice problems, and most importantly, persevering when things get difficult. Asking questions throughout the class is not a sign of weakness–it shows that you are actively trying to understand what you know and what you do not know. We have an excellent staff of teaching assistants and peer mentors who are here to answer your questions, help you understand course material in different ways, and push you to your fullest learning potential. With your consistent and active participation in learning, you can navigate the material in the course and become a proficient programmer by the end of the quarter.
+
+Course Format
+
+While some of our reserved class periods will be used for interactive lectures where new concepts will be introduced, other days will be reserved for in-depth tutorials where students will be expected to review course materials (recorded lecture videos, slides, and notes) before the class period and during class we will work in small groups to complete an in-depth programming assignment.
+
+The rough schedule of the course will be (there are some exceptions):
+
+Mondays - Lecture Day
+
+Wednesdays - Tutorial Day
+
+Fridays - Practice Day","What is the main goal of the course?
+",The main goal of the course is to introduce students to the fundamental constructs of computer programming and how to apply these low-level constructs in creative and useful ways.,/kaggle/input/course-bot-data/documents/cbain_syllabus.md,2.0,"The context does not provide a clear main goal of the course. It mentions several goals, such as introducing fundamental constructs of computer programming, practicing the basics, committing to attending lectures and tutorials, and becoming a proficient programmer. However, it does not provide a clear main goal.
+
+",5.0,"This question is useful for understanding the purpose of the course and what students can expect to gain from it. It allows potential students to determine if the course aligns with their goals and interests.
+
+",5.0,"The question is context-independent and can be answered without any additional information.
+
+"
+"We will still accept late homework up to 48 hours after the original due date, with a 15% deduction per 24 hour period.
+
+We do not accept resubmissions of assignments. This means it is up to you to verify that: 1. You have submitted the correct file. 2. That your program runs without intervention (except those assignments that ask for human input). 3. That your program is NOT dependent on running on your specific computer.
+
+If you are submitting a partially complete assignment, add a Canvas comment that explains which parts of the assignment you completed and which parts you did not. If you were having a specific problem with completing that part of the assignment (other than ""ran out of time""), make sure to describe what you tried and why you were unable to fix it.
+
+If your program does not run, you will not receive full credit no matter how small the error.
+
+You will generally receive your assignment grades on Canvas within a week of your submission.
+
+Mini-Quizzes
+
+These will be short quizzes for each module of the course that serve as a check of your attendance and/or asynchronous participation in the course. For those that complete the Mini-Quiz in class, you will receive full credit for your attendance and full participation. If you choose to complete the Mini-Quiz remotely, you will need to complete the Canvas version of the quiz within 60 hours of your scheduled class time.
+
+If you attend class but do not receive credit but don't receive credit, you can fill out this Completion Grade Petition form.
+
+Tutorial Grading
+
+The idea of the Tutorials is to provide you with opportunities to both practice your own programming skill as well as learn to communicate with and help other programmers. As such, these Tutorials will be held on Wednesdays during our scheduled class time during the quarter.
+
+These will start the second week of class and you will sign up for a particular Tutorial group at the end of Week 1.","What is the latest time accepted for late homework submissions?
+",Late homework submissions are accepted up to 48 hours after the original due date with a 15% deduction per 24 hour period.,/kaggle/input/course-bot-data/documents/cbain_syllabus.md,5.0,"The context clearly states that late homework submissions will be accepted up to 48 hours after the original due date. Therefore, the question is answerable with the context.
+
+",1.0,"This question is not related to NLP, Hugging Face, or building NLP applications. It is about academic policies and does not provide any value to the developers in the NLP community.
+
+",5.0,"The question refers to a concept of late homework submission. It is not clear whether the question refers to a particular course or a particular institution. But the concept of late homework submission is a common concept in educational institutions.
+"
