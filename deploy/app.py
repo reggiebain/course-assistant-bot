@@ -146,22 +146,9 @@ def split_documents(chunk_size: int, knowledge_base: List[Document],tokenizer_na
 # Method to load embeddins and create vectore store
 def load_embeddings(langchain_docs, chunk_size, embedding_model_name: Optional[str] = "thenlper/gte-small",):
 
-    embedding_model = HuggingFaceEmbeddings(
-        model_name=embedding_model_name,
-        multi_process=True,
-        #model_kwargs={"device": "cuda"},
-        encode_kwargs={"normalize_embeddings": True},  # set True to compute cosine similarity
-    )
-
-    docs_processed = split_documents(
-        chunk_size,
-        langchain_docs,
-        embedding_model_name,
-    )
-    knowledge_index = FAISS.from_documents(
-        docs_processed, embedding_model, distance_strategy=DistanceStrategy.COSINE,
-        #allow_dangerous_deserialization=True
-    )
+    embedding_model = HuggingFaceEmbeddings(model_name=embedding_model_name, encode_kwargs={"normalize_embeddings": True},)
+    docs_processed = split_documents(chunk_size, langchain_docs,embedding_model_name,)
+    knowledge_index = FAISS.from_documents(docs_processed, embedding_model, distance_strategy=DistanceStrategy.COSINE,)
     return knowledge_index
 
 def answer_with_rag(question: str, llm: LLM, knowledge_index: VectorStore, 
@@ -265,13 +252,15 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         #loader = PyPDFLoader(temp_file)
         #docs_processed = loader.load()
         docs_processed = load_documents(uploaded_file)
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE)
 
-        texts = text_splitter.split_documents(docs_processed)
+       # text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE)
+       # texts = text_splitter.split_documents(docs_processed)
+       # embeddings = HuggingFaceEmbeddings(model_name="thenlper/gte-small", encode_kwargs={"normalize_embeddings": True})
+       # knowledge_index = FAISS.from_documents(docs_processed, embeddings, distance_strategy=DistanceStrategy.COSINE)
 
-        embeddings = HuggingFaceEmbeddings(model_name="thenlper/gte-small", encode_kwargs={"normalize_embeddings": True})
+        knowledge_index = load_embeddings(docs_processed, CHUNK_SIZE,)
+       
         st.success(f"Embeddings loaded...")
-        knowledge_index = FAISS.from_documents(docs_processed, embeddings, distance_strategy=DistanceStrategy.COSINE)
         #docs_processed = load_documents(temp_file)
         # Split into chunks, load embeddings
         #knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
