@@ -46,12 +46,12 @@ Using the information contained in the context,
 give a comprehensive answer to the question.
 Respond only to the question asked, response should be concise (2-3 sentences) and relevant to the question.
 Provide the number of the source document when relevant.
-If the answer cannot be deduced from the context, please respond only with the following message exactly "Couldn't find this answer!"</s>
+If the answer cannot be deduced from the context, please respond only with the following message exactly "Couldn't find this answer!" and nothing else</s>
 <|user|>
 Context:
 {context}
 ---
-Now here is the question you need to answer. Remember, if you cannot deduce the answer from the context, respond with the message "Couldn't find this answer" and say nothing else.
+Now here is the question you need to answer. Remember, if you cannot deduce the answer from the context, respond only with the message "Couldn't find this answer" and say nothing else.
 
 Question: {question}
 </s>
@@ -252,7 +252,7 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
         #loader = PyPDFLoader(temp_file)
         #docs_processed = loader.load()
         docs_processed = load_documents(uploaded_file)
-
+        st.success("Document loaded successfully!")
        # text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE)
        # texts = text_splitter.split_documents(docs_processed)
        # embeddings = HuggingFaceEmbeddings(model_name="thenlper/gte-small", encode_kwargs={"normalize_embeddings": True})
@@ -260,11 +260,10 @@ if uploaded_file and st.button("Upload and Process Syllabus"):
 
         knowledge_index = load_embeddings(docs_processed, CHUNK_SIZE,)
        
-        st.success(f"Embeddings loaded...")
         #docs_processed = load_documents(temp_file)
         # Split into chunks, load embeddings
         #knowledge_index = load_embeddings(docs_processed, chunk_size=CHUNK_SIZE)
-        st.success("Knowledge index created...")
+        st.success("Knowledge index created! Querying LLM...")
         llm_choice = get_llm(selected_model)
         results = process_questions_with_answers(questions, llm_choice, knowledge_index)
         score = score_syllabus(results)
