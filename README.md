@@ -19,6 +19,7 @@ Our RAG pipeline was tested on several real course syllabi from college-level co
 ## Embeddings
 We used the General Text Embeddings model from HuggingFace's library (https://huggingface.co/thenlper/gte-small) using the small version for practical purposes. This model creates vector embeddings of the document, which is split into a number of chunks. First, we used LangChain and the GTE-Small model to create splits after tokenizing. Atlhgouh the easiest way to split a document into chunks by a simple character count/chunk size, using a tokenizer-based splitter allows for a more semantically relevant division of the document into relevant sections/paragraphs/sentences. Many different models could be used for creating embeddings, but this model was generally recommended as high-performing for open-source, small models. 
 ## Retrieval
+Using LangChain, we create a small vector store using [Facebook AI Similarity Search (FAISS)](https://ai.meta.com/tools/faiss/) for indexing/searching. This allows us to store embeddings of our source documents and quickly search through them when given a query to find the most semantically relevant context. This process is called "retrieval" and relies on comparing the cosine similarity of an embedded query with the vector embeddings of the chunked source material.
 ## LLMs
 ## Results
 ## Future Work
@@ -29,6 +30,9 @@ Our intention is to productionalize this application. This will require cloud co
 1. Use Amazon Redshift and/or DocumentDB services for vectorstores of embedded files.
 2. Use AmazonS3 instances or HuggingFace Endpoint (Pro tier) to store high-parameter, high-performing LLMs.
 3. Build AWS Glue scripts to manage databases and connect with UI for performing RAG.
+Since we're, for the time being, releasing the app via Streamlit cloud-hosting to the public, we did not yet implement non open source cloud computing resources, although it is our plan to ultimately do so.
+#### Additional Use Cases
+Going forward, we feel that AI-driven course module building tools can be a valuable tool for instructors, students, and administrators. Our next goal is to extend this RAG pipeline and suite of tools to course content, including open-source textbooks and the notes/lectures of individual professors. The existing pipeline CAN already do this for notes that are embedded in HTML, Markdown, of PDF format. The content of Google Slides can already easily be exported to HTML. Why do this? Because this technique could allow instructors (and ultimately students) to interact with courses via LLMs that protect their intellectual property/data. In our opinion, the proptection of instructors IP is a huge road block to a broader use of AI within courses. We are developing our work into a self-contained python-based application that would allow instructors to do this.
 ## References
 [1] https://tll.mit.edu/teaching-resources/course-design/syllabus/
 
@@ -39,3 +43,5 @@ Our intention is to productionalize this application. This will require cloud co
 [4] https://platform.openai.com/docs/models 
 
 [5] https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard
+
+[6] https://ai.meta.com/tools/faiss/
