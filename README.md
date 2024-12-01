@@ -17,7 +17,11 @@ This project is a proof of concept of what we envision as a broad class of AI-ba
 ## Data
 Our RAG pipeline was tested on several real course syllabi from college-level courses. Although we would have liked to test on a wide variety of types of courses in different subjects and formats (we only had permission to use a physics syllabus from a residential STEM high school and a computer science course at Northwestern University), the pipeline should easily generalize to any reasonably formatted syllabus (or other course document/resource). [In our document store](./documents), you'll find two different formats for a syllabi, one in Markdown and one as a PDF. The pipeline works robustly for both of these formats, but should also work for HTML format. You'll also find JSON files of key sets of questions we tested on each syllabus where we knew the answers were contained in the documents. We explore this more below.
 ## Embeddings
-We used the General Text Embeddings model from HuggingFace's library (https://huggingface.co/thenlper/gte-small) using the small version for practical purposes. This model creates vector embeddings of the document, which is split into a number of chunks. First, we used LangChain and the GTE-Small model to create splits after tokenizing. Atlhgouh the easiest way to split a document into chunks by a simple character count/chunk size, using a tokenizer-based splitter allows for a more semantically relevant division of the document into relevant sections/paragraphs/sentences. Many different models could be used for creating embeddings, but this model was generally recommended as high-performing for open-source, small models. 
+We used the General Text Embeddings model from HuggingFace's library (https://huggingface.co/thenlper/gte-small) using the small version for practical purposes. This model creates vector embeddings of the document, which is split into a number of chunks. First, we used LangChain and the GTE-Small model to create splits after tokenizing. Atlhgouh the easiest way to split a document into chunks by a simple character count/chunk size, using a tokenizer-based splitter allows for a more semantically relevant division of the document into relevant sections/paragraphs/sentences. 
+![alt](images/embeddings_image.png)
+*The diagram above, courtesy of LangChain [7], shows a diagram of the vector embedding  process*
+
+Many different models could be used for creating embeddings, but this model was generally recommended as high-performing for open-source, small models. 
 ## Retrieval
 Using LangChain, we create a small vector store using [Facebook AI Similarity Search (FAISS)](https://ai.meta.com/tools/faiss/) for indexing/searching. This allows us to store embeddings of our source documents and quickly search through them when given a query to find the most semantically relevant context. This process is called "retrieval" and relies on comparing the cosine similarity of an embedded query with the vector embeddings of the chunked source material.
 ## LLMs
@@ -45,3 +49,5 @@ Going forward, we feel that AI-driven course module building tools can be a valu
 [5] https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard
 
 [6] https://ai.meta.com/tools/faiss/
+
+[7] https://python.langchain.com/docs/concepts/embedding_models/
