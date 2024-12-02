@@ -61,18 +61,19 @@ However, anything more specific (which will be most questions students will have
 - *What textbook is needed for the course?*
 - *What is the grading policy for this course?*
 - *How many tests and labs will I have to complete?*
+
 We took some questions that we generated to ask syllabi in [this notebook](src/rag-eval.ipynb) and combined them with some more general questions we thought an LLM could answer without context that could be important for a syllabus to answer. To be more fair to the baseline, we fed these questions to GPT-4o (200+B parameters) which has far more parameters than Zephyr-8B and should thus provide better answers to general questions. The results can be found below:
 
-| Question | Generated Answer |
-|---|---|
-| What is the grading range for an F grade in the Graduate course? | Cannot answer. |
-| How many extensions can a student request for assignments during the quarter?    | Cannot answer. |
-| What is programming used for? | Programming is used to instruct computers to perform specific tasks, solve problems, and automate processes. |
-| Who are the people that can be found in the course staff? | Cannot answer. |
-| What is the primary textbook for the course?  | Cannot answer. |
-| What should students bring to the exam according to the instructor? | Cannot answer.  
-| How many college credit hours can students earn in the General Physics I course? | Cannot answer. |
-| What is the purpose of edSTEM?                                                   | Cannot answer. |
+| Question | Generated Answer | Score |
+|---|---| --- |
+| What is the grading range for an F grade in the Graduate course? | Cannot answer. | 0 |
+| How many extensions can a student request for assignments during the quarter?    | Cannot answer. | 0 |
+| What is programming used for? | Programming is used to instruct computers to perform specific tasks, solve problems, and automate processes. | 5 |
+| Who are the people that can be found in the course staff? | Cannot answer. | 0 |
+| What is the primary textbook for the course?  | Cannot answer. | 0 |
+| What should students bring to the exam according to the instructor? | Cannot answer.  | 0 |
+| How many college credit hours can students earn in the General Physics I course? | Cannot answer. | 0 |
+| What is the purpose of edSTEM?                                                   | Cannot answer. | 0 |
 
 Using GPT4, you can notice that generic questions such as "What is programming used for?" can certainly be answered by an LLM without RAG for retrieving context. However, any question that requires any specificity whatsoever can't be answered. **Our RAG model is a vast improvement over the baseline!**
 ## Future Work
