@@ -1,19 +1,45 @@
-,question
-0,"What is the primary textbook for the course?
-"
-1,"What is the recommended way to study physics to avoid poor test scores?
-"
-2,"What should students bring to the exam according to the instructor?
-"
-3,"How many college credit hours can students earn in the General Physics I course?
-"
-4,"What is the course code for the Introduction to Computer Programming course?
-"
-5,"What is the purpose of edSTEM?
-"
-6,"What days are tutorials held in the programming course?
-"
-7,"What is the main goal of the course?
-"
-8,"What is the latest time accepted for late homework submissions?
-"
+,question,generated_answer,true_answer
+0,"How will the course policy be applied at the end of the quarter?
+","
+According to Document 1, the policy for dropping the lowest quiz, tutorial, exercise, and Mini-Quiz scores will be automatically applied at the end of the quarter for all students. No action is required on their part. This means that the grades for each student's lowest quiz, tutorial, exercise, and Mini-Quiz scores (including 0s) will be dropped, and their final grades will be calculated based on their remaining scores.",The course policy will be automatically applied at the end of the quarter for all students. No action is required on their part.
+1,"What is the grading range for an F grade in the Graduate course?
+","
+In the Graduate course, the range for an F grade is 0-69.99, according to Document 0. However, the Graduate School does not recognize D letter grades, so if a student is enrolled in the course as a graduate student, the range for the F grade is 0-69.99 instead of the usual 60-69.99 for undergraduate students.",The grading range for an F grade in the Graduate course is 0-69.99.
+2,"What is considered a violation of Northwestern’s Academic Honesty Policy?
+","
+Answer: According to the provided context, exchanging programs or program fragments, copying solutions from any source, attempting to turn in generated code, and presenting work other than one's own are all considered violations of Northwestern's Academic Honesty Policy. Additionally, uploading materials from the course to any repository or page is prohibited by Northwestern's academic integrity policies and may also violate copyright policies in Northwestern's Student Conduct Code. It is important to note that all suspected incidents of violating the Academic Integrity of the course will be reported immediately to the Dean of Students. (Source documents: 0, 1, and 3)",Turning in code that you yourself did not both conceive of and type into your computer is considered a violation of Northwestern’s Academic Honesty Policy.
+3,"How many extensions can a student request for assignments during the quarter?
+","
+According to Document 0, a student may request extensions on 2 assignments throughout the quarter. This policy is deliberate and requires students to consider the need for extra time at least 24 hours in advance of the deadline. There will be no exceptions to this policy, and once a waiver is granted, it cannot be voided.",A student can request extensions on 2 assignments throughout the quarter.
+4,"What is programming used for?
+","s and peer mentors. Overall, programming is a versatile tool used by people from various professions to accomplish diverse and specialized goals, and understanding programming concepts is a valuable modern literacy.","Programming is used as a powerful medium for creative expression, a tool for thinking about problems, a way of amplifying communication, a means of performing complex calculations over massive datasets, and more."
+5,"Who are the people that can be found in the course staff?
+","
+The course staff consists of 33 individuals who will provide support to help students achieve their learning goals. This includes Peer Mentors, who will be assigned to tutorial groups and offer office hours, as well as Graduate TAs, who can provide broader context and address concerns beyond what Peer Mentors can offer. More information about the course staff can be found on the Course Resources page. (Source: Document 0)","The course staff includes 33 members, including TAs and peer mentors."
+6,"What is the primary textbook for the course?
+","
+The primary textbook for the course is Douglas C. Giancoli's edition of General Physics, as stated in Document 0. A physical copy is provided to students.","The primary textbook for the course is Physics: Principles with Applications, 7th ed., by Douglas C. Giancoli."
+7,"What is the recommended way to study physics to avoid poor test scores?
+","
+According to Document 1, line b, the recommended way to study physics to avoid poor test scores is to make time each day to work on problem sets in advance of the deadline and not procrastinate. Additionally, Document 2 suggests using a variety of simulations, watching online physics videos, and potentially being assigned additional reading from outside resources as additional course resources. It's also important to note that physics demands a daily, systematic, and focused approach to studying, as mentioned in Document 0, line c. Practicing physics problems is also crucial, as stated in Document 0, line c, as it requires practice to develop the necessary skills. Overall, consistent and deliberate study habits are essential for success in physics.","The recommended way to study physics is to make time each day to work on problem sets in advance of the deadline and adopt a daily, systematic, and focused approach to studying. Cramming the night before an assignment or exam is not effective."
+8,"What should students bring to the exam according to the instructor?
+","
+According to the instructions provided in Documents 0, 1, 2, and 5, students should bring a writing utensil, either a notebook or a tablet for taking notes and entering answers on WebAssign, and a phone for scanning or uploading written work. Additionally, in Document 2, students should bring a laptop if possible, as one person per group should bring a laptop for Google Docs, Google Sheets, or LoggerPro. In Document 6, students should bring an AP approved calculator, as well as a formula sheet and scratch paper, which will be provided. It's important to note that students should not use their phones or laptops during class, except for scanning or uploading written work, and should come to office hours with specific questions or issues after trying the homework first. The instructor may also ask students to attend another section or attend virtually/remotely in certain cases.","Students should bring a writing utensil, a laptop/tablet for entering answers on WebAssign, a phone to scan/upload any written work for free response questions, an AP approved calculator, and a formula sheet."
+9,"How many college credit hours can students earn in the General Physics I course?
+","
+According to Document 0, students enrolled in General Physics I (PHYS 215) through dual enrollment with Francis Marion University (FMU) and taught by a GSSM instructor may earn up to 4 college credit hours, depending on their grade and the transfer policies of their college/university. This information can be found in the Dual Enrollment FAQ in the Course Catalog.",Students can earn up to 4 college credit hours depending on their grade and the transfer policies of their college/university.
+10,"What is the course code for the Introduction to Computer Programming course?
+","
+The course code for the Introduction to Computer Programming course is COMP_SCI 110, as stated in Document 1, the syllabus for Term Spring 2024.",COMP_SCI 110
+11,"What is the purpose of edSTEM?
+","
+The purpose of edSTEM, as stated in Document 1, is for students to ask questions related to the course that can be answered by either Course Staff or other students in the course. It is a Question-and-Answer site similar to Piazza or Campuswire that allows students to seek clarification or assistance with course content, personal matters related to their participation in the course, or larger grade concerns, among other things. Students are encouraged to use edSTEM instead of relying solely on the Peer Mentors or graduate TAs for non-technical issues. However, for more serious concerns, students should speak directly with Prof. Bain.",edSTEM is a Question-and-Answer site like Piazza/Campuswire that allows students to ask questions that can then be answered by either Course Staff or other students in the course.
+12,"What days are tutorials held in the programming course?
+","
+The tutorials in the programming course are held on Wednesdays during the scheduled class time, as stated in Document 3 and Document 4. This information is also mentioned in Document 1, where students are required to sign up for a tutorial group at the end of Week 1. Therefore, the answer to the question is Wednesdays.",Tutorials are held on Wednesdays in the programming course.
+13,"What is the main goal of the course?
+","
+The main goal of the course, as stated in Document 0, is to introduce students to the fundamental constructs of computer programming and how to apply them in creative and useful ways, with the understanding that learning a programming language is similar to learning a new spoken/written language and requires dedication to practicing the basics in order to progressively move to more complex programming practice.",The main goal of the course is to introduce students to the fundamental constructs of computer programming and how to apply these low-level constructs in creative and useful ways.
+14,"What is the latest time accepted for late homework submissions?
+","
+According to Document 1, the latest time accepted for late homework submissions is 48 hours after the original due date, with a 15% deduction per 24 hour period. However, students may still apply for Late Penalty Waivers using a Google Form included at the bottom of each assignment, and they must request the extension at least 24 hours in advance of the homework deadline. Students may only apply for a maximum of 2 Late Penalty Waivers in a quarter. No assignments are accepted after 48 hours, and this policy does not extend the final due date, it only waives the late penalty.",Late homework submissions are accepted up to 48 hours after the original due date with a 15% deduction per 24 hour period.

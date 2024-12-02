@@ -1,0 +1,161 @@
+context,question,answer,source_doc,groundedness_score,groundedness_eval,relevance_score,relevance_eval,standalone_score,standalone_eval
+"This policy will be automatically applied at the end of the quarter for all students. No action is required on your part.
+
+Course Materials and Resources
+
+This is a zero cost course meaning that you are not required to purchase any additional materials to complete the course outside those required by the university as a whole. All required course materials will be distributed to registered members of the class directly via Canvas.
+
+Course Software
+
+We will be using some free software programs and libraries in order to write, debug, and run ISL+/ASL programs. Installing and configuring this software can be a huge hassle, but it is part of the process of developing your computing proficiencies. Please note, you will need a computer capable of running Racket 8.14 in order to participate in this course. Any Windows/Mac/Linux computer from the last decade should be fine, however, you may encounter difficulties using a Chromebook, iPad, or other non-standard operating system.
+
+If you do not have access to appropriate computing hardware, please let the course staff know as soon as possible so that we can help you make other arrangements either a computing loaner program or arranging for you to use a computer lab on campus.
+
+edSTEM
+
+Ed (sometimes called edSTEM) is a Question-and-Answer site that allows students to ask questions that can then be answered by either Course Staff or other students in the course as well as create discussion areas about both related and unrelated topics.
+
+Check out out the Course Resources page for the registration link.
+
+Auxillary Texts
+
+While we will not follow any textbook exactly, we will use two auxiliary texts which can serve as an excellent resource both for students looking for different perspectives on the course content as well as students looking for additional content outside our syllabus (note, both are free to access online):
+
+Abelson, H., Sussman, G. and Sussman J. 1996. Structure and Interpretation of Computer Programs","How will the course policy be applied at the end of the quarter?
+",The course policy will be automatically applied at the end of the quarter for all students. No action is required on their part.,/kaggle/input/course-bot-data/cbain_syllabus_111.html,5.0,"The context clearly states that the course policy will be automatically applied at the end of the quarter for all students and no action is required on the students' part. Therefore, the question is clearly and unambiguously answerable with the context.
+
+",1.0,"This question is not related to machine learning, natural language processing, or the Hugging Face ecosystem. It is more likely to be relevant in an academic or professional context, where policies and procedures are in place to regulate the behavior of students or employees. Therefore, I would rate this question as a 1, as it is not useful for machine learning developers building NLP applications with the Hugging Face ecosystem.
+
+",5.0,"The question is asking about the application of a course policy at the end of a quarter, which is a specific time frame. However, it does not explicitly refer to any particular context or document, so it can be understood without additional information.
+
+"
+"Note: The Graduate School does not recognize D letter grades meaning if you are enrolled in the class as a graduate student, the range for the F grade is 0-69.99.
+
+Mini-quizzes
+
+These will be short quizzes for each module of the course that serve as a check of your attendance and/or asynchronous participation in the course. For those that complete the Mini-Quiz in class, you will receive full credit for your attendance and full participation. If you choose to complete the Mini-Quiz remotely, you will need to complete the Canvas version of the quiz within 48 hours of your scheduled class time.
+
+Tutorials
+
+The idea of the Tutorials is to provide you with opportunities to both practice your own programming skill as well as learn to communicate with and help other programmers. As such, these Tutorials will be held on Wednesdays (with one exception) during our scheduled class time during the quarter.
+
+These will start the second week of class and you will sign up for a particular Tutorial group at the end of Week 1.
+
+By completing the tutorials, you will become familiar with the types of strategies you might use to approach problems , push you to write lots of programs, and help you assess what you know and don’t know so that you can know when to ask for more help in lecture or in office hours.
+
+This course is meant to a be a learning community which requires the dedicated participation of all members. Attendance is required for the first Tutorial, but you may choose to submit future tutorials remotely.
+
+If you attend the Tutorial session in-person and make a legitimate attempt (up to the discretion of your Peer Mentor) at completing the assignment, you will receive full-credit. If you choose not to attend in-person, then your assignment will be reviewed for completion and accuracy meaning you may nor may not receive full credit. Remote tutorials will be graded via the same autograding mechanism as the Exercises.
+
+We will not accept late tutorial submissions.","What is the grading range for an F grade in the Graduate course?
+",The grading range for an F grade in the Graduate course is 0-69.99.,/kaggle/input/course-bot-data/cbain_syllabus_111.html,2.0,"The context does provide some information about the grading system for the course, but it does not provide a specific range for an F grade in the Graduate course. The context only mentions that the Graduate School does not recognize D letter grades, and the range for the F grade is 0-69.99. This information is not sufficient to unambiguously answer the question about the ing range for an F grade in the Graduate course.
+
+",1.0,"This question is not related to machine learning, natural language processing, or the Hugging Face ecosystem. It is about academic grading policies, which are not relevant to the development of NLP applications.
+",5.0,"This question is context-independant, as it refers to a standard grading range for a specific grade in a graduate course.
+
+"
+"Abelson, H., Sussman, G. and Sussman J. 1996. Structure and Interpretation of Computer Programs
+
+Felleisen, M., Findler, R., Flatt, M., and Krishnamurthi, S. 2018. How to Design Programs
+
+Academic Honesty
+
+In the past, there have been incidents in which students have presented work other than their own. This course (and our department and school) take Academic Integrity very seriously and report all instances of Academic Integrity Violations to the Dean’s Office. Many of each violation type below were reported to the Dean's Office last quarter alone.
+
+Every student submission is subject to an in-person audit/interview by course staff. If there is any part of your program, both its function and the process by which you designed it, you cannot explain–up to the satisfaction of the instructor–it will be considered a violation of Northwestern’s Academic Integrity policy and you will receive an automatic 0 on the assignment.
+
+For the programming assignments, you are allowed (encouraged, even!) to discuss general approaches to solving problems, but all work you submit must be your own. Working “together” and presenting variants of the same file is not acceptable.
+
+Here are some specific guidelines:
+
+Other than during in-class Tutorial assignments, you should essentially never look at another student’s code.
+
+The only code you should ever be looking at should have either been posted / generated by the Course Staff or included in one of our auxillary textbooks.
+
+Do not exchange programs or program fragments in any form with other students – on paper, via e-mail, or by other means.
+
+Do not copy solutions from any source, including the web or previous CS 111 students.
+
+Do not attempt to turn in code that has been generated, in-part or in-whole, via any computational means.
+
+If you turn in code that you yourself did not both conceive of and type into your computer, you have committed a violation of Northwestern’s Academic Honesty Policy.","What is considered a violation of Northwestern’s Academic Honesty Policy?
+",Turning in code that you yourself did not both conceive of and type into your computer is considered a violation of Northwestern’s Academic Honesty Policy.,/kaggle/input/course-bot-data/cbain_syllabus_111.html,3.0,"The question is somewhat answerable with the context, but it is not explicitly stated what is considered a violation of Northwestern’s Academic Honesty Policy. The context provides examples of what is not allowed, but it does not provide a comprehensive list of what is considered a violation.
+
+",1.0,"This question is not related to machine learning, natural language processing, or the Hugging Face ecosystem. It is about academic honesty policy at Northwestern University. Therefore, it is not useful for machine learning developers building NLP applications with the Hugging Face ecosystem.
+
+",5.0,"This question is context-independant, as it refers to a general policy, which is not specific to a particular setting or document. The question is clear and does not require any additional information to be understood.
+
+"
+"Late Penalty Waiver
+
+The late penalty waiver applies ONLY to Exercises and is meant to accommodate students who may have a particular week during the quarter where they are unable to complete the assigned Exercise on-time. Students may apply (using a Google Form included at the bottom of each assignment) to have the late penalty waived for a particular assignment with two restrictions:
+
+Students must request the late penalty waiver via the form at least 24 hours in advance of the Exercise deadline.
+
+Students may request extensions on 2 assignments throughout the quarter.
+
+The policy is deliberate in that you, as a student, must actively consider at least 24 hours in advance of the deadline that you will need extra time to complete this assignment. If you find yourself needing extra time on consecutive assignments, this is a good sign that you need to reach out to someone on the Course Staff for help.
+
+There will be no exceptions to this policy. Once you are granted a waiver, it cannot be voided.
+
+Emergency Grade Erasure
+
+The emergency grade erasure policy acknowledges that often times life situations occur that make it impossible to keep up in a course. Do not use this a planning or scheduling device. This is specifically meant to take care of emergencies that happen in your life during the quarter.
+
+Your lowest quiz score (including 0s) is dropped
+
+Your lowest tutorial score (including 0s) is dropped (excluding the final tutorial assignment in Week 11)
+
+Your lowest exercise score (including 0s) is dropped (excluding the final exercise in Week 11)
+
+Your two lowest Mini-Quiz scores (including 0s) are dropped
+
+If you choose to drop an assignment early in the quarter only to find yourself in an emergency situation later in the quarter, you will need to reach out to your Dean of Students in order to arrange for flexibility across all of your coursework.","How many extensions can a student request for assignments during the quarter?
+",A student can request extensions on 2 assignments throughout the quarter.,/kaggle/input/course-bot-data/cbain_syllabus_111.html,4.0,"The context clearly states that students may request extensions on 2 assignments throughout the quarter. The context also states that the late penalty waiver applies only to Exercises, but it does not specify whether the extensions apply only to Exercises or to all assignments. However, the context does not provide any information that would suggest that extensions apply only to Exercises. Therefore, the question is answerable with the context, but the answer is not completely unambiguous.
+
+",1.0,"This question is not related to machine learning, natural language processing, or the Hugging Face ecosystem, so it is not useful for machine learning developers building NLP applications with the Hugging Face ecosystem.
+",5.0,"This question is context-independant, as it does not refer to any particular setting or document. It is clear to an operator with access to documentation what the question is about.
+
+"
+"Programming as an aesthetic discipline: Code can be beautiful; it can also be ugly. Those distinctions have real consequences in the world.
+
+Programming is a powerful medium for creative expression. It can be a representational medium, a tool for thinking about problems, a way of amplifying and/or communicating ideas, a means of performing complex calculations over massive datasets, and more. Being a computer scientist is not a prerequisite for creating useful or advanced programs. In fact, most people who write computer programs are not computer scientists, but rather people who occupy a range of professions. Journalists, geographers, sociologists, scientists, artists, musicians, entrepreneurs, researchers, etc., use programming languages to accomplish diverse and specialized goals. And as data and computing increasingly influence and perfuse modern life, understanding the mechanisms (and risks!) that underlie these systems is a valuable modern literacy that is likely to serve you well.
+
+Learning to program is not dissimilar to learning a new spoken/written language–first, you need to understand basic rules like grammar and syntax, then you need exemplar buildings blocks like adjectives, nouns, and prepositions, and only then can you use these ideas together to create computer programs. What this means is that you must dedicate enough time to practicing the basics in order to allow yourself to progressively move to more and more complex programming practice.","What is programming used for?
+","Programming is used as a powerful medium for creative expression, a tool for thinking about problems, a way of amplifying communication, a means of performing complex calculations over massive datasets, and more.",/kaggle/input/course-bot-data/cbain_syllabus_111.html,3.0,"The context provides a broad overview of programming, its uses, and the process of learning it. However, it does not explicitly mention what programming is used for. The context does mention that programming can be used for creative expression, problem solving, data analysis, and communication, but it does not provide a comprehensive or specific answer to the question.
+
+",1.0,"This question is not related to machine learning, NLP, or the Hugging Face ecosystem, so it is not useful for developers building NLP applications with Hugging Face.
+",5.0,"This question is context-independent and does not require any additional information to be understood. The answer is general and applies to all programming languages and environments.
+
+"
+"When we assign a pre-recorded lecture, students must watch the video before coming to lecture. Organizationally, some topics/modules span multiple lectures.
+
+Office Hours
+
+Office hours are a crucial component of this course. Everyone on our course staff is here to help you to be successful in the course and find your own power as current and future programmers. That said, it’s up to you to take the initiative and cultivate a weekly / bi-weekly practice of going to office hours that works for you and your schedule. This looks different for everyone: some people go to 1-2 office hours sessions per week and finish their homework with a TA or peer mentor nearby (if needed). Other students never go to office hours (though this is rare, as the exercises are challenging). Also, different people connect with different TAs/peer mentors, so do shop around to find a person with whom you work well.
+
+Office hours are meant to be a time where you can ask questions that you need answered. That being said, we ask that you come to office hours having already thought about the assignment or issue you have been having. Please try your best to come to office hours prepared to ask questions like:
+
+I didn’t understand X idea in lecture / tutorial this week. Can you explain it to me?
+
+I’m having trouble finding a good place to start in this week’s homework. Can you help?
+
+My laptop won’t run this code from class. What am I doing wrong?
+
+My program is returning this error which I’ve tried to fix. What am I missing?
+
+What courses should I take next after CS 111?
+
+What kinds of CS-related careers and opportunities are out there?
+
+Course Staff
+
+This is a very large class and in order to better support each of your learning goals, we have 33 course staff members. Visit the Course Resources page for a Staff Directory of all our amazing course staff members!
+
+Peer Mentors","Who are the people that can be found in the course staff?
+","The course staff includes 33 members, including TAs and peer mentors.",/kaggle/input/course-bot-data/cbain_syllabus_111.html,3.0,"The context provides a clear definition of the roles of the peer mentors, TAs, and instructors. The context also provides a clear definition of the role of office hours. However, the context does not provide a clear definition of the course staff. The context only provides a list of the course staff members.
+
+",1.0,"This question is not related to machine learning, natural language processing, or the Hugging Face ecosystem. It is asking about the staff of a specific course, which is not relevant to the development of NLP applications.
+
+",5.0,"This question is context-independant, as it refers to a 'course staff', which is a common term in online courses. The question is clear and does not depend on any additional information.
+"

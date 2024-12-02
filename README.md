@@ -30,18 +30,46 @@ Using LangChain, we create a small vector store using [Facebook AI Similarity Se
 ## LLMs
 We experimented with a variety of LLMs but ultimately used the following, which according to various benchmarks, perform well for the tasks for which they were used in our pipeline.
 - Embeddings: [General Text Embeddings - Small](https://arxiv.org/abs/2308.03281)
+- Synthetic Question Generation: [Mixtral-8x7B-Instruct](https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1)
 - Q&A with Context: [Zephyr 7B $\beta$](https://arxiv.org/abs/2310.16944)
 - Q&A with Context: [Llama 3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B)
 - LLM as Judge Agent: [GPT-4-1106-Preview](https://platform.openai.com/docs/models)
 ## Results
+#### LLM Evaluation of Q&A Pairs
 We evaluated our RAG pipeline using the following process:
 1. Generate synthetic Q&A dataset using an LLM to generate questions based on the source documents
 2. Feed synthetic dataset to LLM to get answers for each question
 3. Use LLM to evaluate several metrics: "groundedness", "relevance", and "standalone" based on definitions of key metrics [here](https://docs.ragas.io/en/latest/concepts/metrics/overview/) and [here](https://arxiv.org/abs/2312.10003).
 4. Construct prompt to evaluate the answers based on the questions and source documents using a more powerful LLM as *judge agent*
-We evaluated several syllabi, scoring the synthetically generated Q&A pairs which can be found [here for our markdown pipeline](out/rag_eval_results_md/working/generated_qa.csv) and [here for our pdf pipeline](out/rag_eval_results_pdf/working/generated_qa.csv). The scores were generated using the evaluation prompt found [here from HuggingFace](https://huggingface.co/learn/cookbook/en/rag_evaluation). Scores ranged from 1-5 and were based on the correctness of the answer based on the source material. Our distribution can be found below.
+We evaluated several syllabi, scoring the synthetically generated Q&A pairs which can be found [here for our markdown pipeline](out/rag_eval_results_md/working/generated_qa.csv) and [here for our pdf pipeline](out/rag_eval_results_pdf/working/generated_qa.csv). We kept only Q&A pairs where the question had a groundedness, relevance, and standalone of at least 1. This, unfortunately, cut out some questions that yield reasonable results when plugged into our RAG pipeline (for example using our Streamlit app). One example was the question *What platform do students use to submit homework assignments and complete in-class tests?* for the PDF syllabus in our document store. While this was cut, when plugged into our Streamlit app, the RAG pipeline output generally includes the term *WebAssign*, which is indeed correct. However, we felt the process of culling questions based on widely used metrics was important.
+
+The scores were generated using the evaluation prompt found [here from HuggingFace](https://huggingface.co/learn/cookbook/en/rag_evaluation). Scores ranged from 1-5 and were based on the correctness of the answer based on the source material. Our distribution can be found below.
 ![alt](images/gpt4_rag_eval.png)
-**PLEASE NOTE:** When using open-source models and free-tier resources, we were severely rate limited, often having to wait 12 hours to submit additional queries even when using techniques for web scraping. We decided to at least generate 1 synthetic question per semantically distinct portion of the source material as found by the embeddings model. With additional resources, this exact pipeline could easily generate hundreds of synthetic questions.
+
+Overall, these results are quite good, with the majority of RAG model's responses receiving a 5/5 score from the judge agent (GPT4)! **NOTE:** When using open-source models and free-tier resources, we were severely rate limited, often having to wait 12 hours to submit additional queries even when using techniques for web scraping. We decided to at least generate 1 synthetic question per semantically distinct portion of the source material as found by the embeddings model. With additional resources, this exact pipeline could easily generate hundreds of synthetic questions.
+#### Baseline Comparison
+We considered a number of options for a baseline model including a rule-based keyword search, human evaluation of the Q&A set, randomly guessing text that could answer a question, and bag-of-words similarity search (via TF-IDF), among others. However, we decided to compare our RAG pipeline with a model that directly uses an LLM without any document retrieval. 
+
+This approach will have obvious limitations based on the specific questions asked and so creating a question set to compare our RAG pipeline with is tricky. Modern state-of-the-art LLMs will be able to provide excellent answers to general questions such as: 
+- *How can I study for tests in computer science?*
+- *What are some online resources I can use to help me study for intro physics?*
+- *What information should my syllabus include?*
+However, anything more specific (which will be most questions students will have about a course) will require more specific context. Questions that the syllabus should (and an LLM will be able to handle via RAG) be able to answer include:
+- *What textbook is needed for the course?*
+- *What is the grading policy for this course?*
+- *How many tests and labs will I have to complete?*
+We took some questions that we generated to ask syllabi in [this notebook](src/rag-eval.ipynb) and combined them with some more general questions we thought an LLM could answer without context that could be important for a syllabus to answer. To be more fair to the baseline, we fed these questions to GPT-4o (200+B parameters) which has far more parameters than Zephyr-8B and should thus provide better answers to general questions. The results can be found below:
+
+| Question | Generated Answer |
+|---|---|
+| What is the grading range for an F grade in the Graduate course? | Cannot answer. |
+| How many extensions can a student request for assignments during the quarter?    | Cannot answer. |
+| What is programming used for? | Programming is used to instruct computers to perform specific tasks, solve problems, and automate processes. |
+| Who are the people that can be found in the course staff? | Cannot answer. |
+| What is the primary textbook for the course?  | Cannot answer. |
+| What should students bring to the exam according to the instructor? | Cannot answer.  
+| How many college credit hours can students earn in the General Physics I course? | Cannot answer. |
+| What is the purpose of edSTEM?                                                   | Cannot answer. |
 ## Future Work
 #### Open Source vs. Proprietary LLMs, APIs
 There are a number of ways we would like to advance this work. The biggest log jam is the use of open source, small models that can be run locally and without high API costs. The one proprietary LLM we used was [OpenAIs gpt-4-1106-preview model](https://platform.openai.com/docs/models), a state-of-the-art model that was used for evaluating the responses to the synthetically generated Q&A sets we created in our [evaluation notebook found here](./src/rag-eval.ipynb). With additional resources, we would want to use the highest quality LLMs for the tasks of embeddings, Q&A, synthetic Q&A generation, etc that are available as found here on the [Hugging Face Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard).
