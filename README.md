@@ -1,5 +1,7 @@
 # Course Assistant Bot
+
 ### Developed by Reggie Bain
+### [Click here to try our Syllabus Analyzer Streamlit App](https://course-assistant-bot.streamlit.app/)
 ## Overview
 #### Background
 This project is a proof of concept of what we envision as a broad class of AI-based assistant for course development. It focuses on a tool for building effective course syllabi, which serve a variety of key functions in course development. MIT's Teaching and Learning Lab (referencing Slattery and Carlson (2005)), for example, outlines 3 goals for a syllabus include the document being (1) motivational, (2) structural, and (3) evidentiary. The syllabus can not only serve to outline the key components of the course, but also serves as a sort of "contract" between the students and the instructional staff. In recent years, the rise of AI use in educational contexts (and resulting issues with academic integrity violations) has made the contract aspect of syllabi particularly important. Course policies must be enforced equitably and worded clearly, particularly in [cases where litigation could be involved](https://apnews.com/article/high-school-student-lawsuit-artificial-intelligence-8f1283b517b2ed95c2bac63f9c5cb0b9). This tool is an example of a simple suite of tools that can help instructors, departments, or colleges to quickly assess, among other course resources, how effective syllabi are at answering student questions by actually simulating asking those questions using Large Language Models (LLMs).
@@ -54,6 +56,7 @@ This approach will have obvious limitations based on the specific questions aske
 - *How can I study for tests in computer science?*
 - *What are some online resources I can use to help me study for intro physics?*
 - *What information should my syllabus include?*
+
 However, anything more specific (which will be most questions students will have about a course) will require more specific context. Questions that the syllabus should (and an LLM will be able to handle via RAG) be able to answer include:
 - *What textbook is needed for the course?*
 - *What is the grading policy for this course?*
@@ -70,6 +73,8 @@ We took some questions that we generated to ask syllabi in [this notebook](src/r
 | What should students bring to the exam according to the instructor? | Cannot answer.  
 | How many college credit hours can students earn in the General Physics I course? | Cannot answer. |
 | What is the purpose of edSTEM?                                                   | Cannot answer. |
+
+Using GPT4, you can notice that generic questions such as "What is programming used for?" can certainly be answered by an LLM without RAG for retrieving context. However, any question that requires any specificity whatsoever can't be answered. **Our RAG model is a vast improvement over the baseline!**
 ## Future Work
 #### Open Source vs. Proprietary LLMs, APIs
 There are a number of ways we would like to advance this work. The biggest log jam is the use of open source, small models that can be run locally and without high API costs. The one proprietary LLM we used was [OpenAIs gpt-4-1106-preview model](https://platform.openai.com/docs/models), a state-of-the-art model that was used for evaluating the responses to the synthetically generated Q&A sets we created in our [evaluation notebook found here](./src/rag-eval.ipynb). With additional resources, we would want to use the highest quality LLMs for the tasks of embeddings, Q&A, synthetic Q&A generation, etc that are available as found here on the [Hugging Face Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard).
