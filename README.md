@@ -15,11 +15,10 @@ This tool is an example of a simple suite of tools that can help instructors, de
 1. Instructors, departments, and colleges that have incentive for courses to have effectively constructed syllabi
 2. Students, who will be better able to understand expectations of them (grading policies, resources needed) in courses.
 3. Administrators at universities and/or legal teams who want to assess syllabi from a "contract" point of view.
-[Click here for write up](https://docs.google.com/document/d/1TLx1REQPteNJ01rnNXXXq0XGCFc9cZoriAiHYC5Np24/edit#heading=h.fcffuc5owalc)
 #### Modeling Approach
 We followed the RAG modeling and evaluation system design [outlined here by HuggingFace](https://huggingface.co/learn/cookbook/en/rag_evaluation) as shown in the diagram below (courtesy HuggingFace). In short, a document is divided into chunks and embedded as high dimensional vectors. Queries from the user are embedded using the same model and then compared to the chunk embeddings of the source document. The RAG pipeline identifies the k most semantically relevant chunks (sometimes performing some so-called *reranking*) and feeds this as *context* along with the query to another LLM.
 ![img](./images/RAG_workflow.png)
-[Click here for write up](https://docs.google.com/document/d/16rt5T4E6p_cVWof3mqoyO5XgBXt_k8VFKqReElIY_DQ/edit?usp=sharing)
+[Click here for write up](write_ups_slides/checkpoints/Modeling%20Approach.pdf)
 ## Data
 Our RAG pipeline was tested on several real course syllabi from college-level courses. Although we would have liked to test on a wide variety of types of courses in different subjects and formats (we only had permission to use a physics syllabus from a residential STEM high school and a computer science course at Northwestern University), the pipeline should easily generalize to any reasonably formatted syllabus (or other course document/resource). [In our document store](./documents), you'll find two different formats for a syllabi, one in Markdown and one as a PDF. The pipeline works robustly for both of these formats, but should also work for HTML format. You'll also find JSON files of key sets of questions we tested on each syllabus where we knew the answers were contained in the documents. We explore this more below.
 ## Embeddings
