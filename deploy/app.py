@@ -46,12 +46,12 @@ Using the information contained in the context,
 give a comprehensive answer to the question.
 Respond only to the question asked, response should be concise (2-3 sentences) and relevant to the question.
 Provide the number of the source document when relevant.
-If the answer cannot be deduced from the context, please respond only with the following message exactly "Couldn't find this answer!" and nothing else</s>
+If the answer cannot be deduced from the context, please respond only with the following message exactly "Couldn't find this answer." and nothing else</s>
 <|user|>
 Context:
 {context}
 ---
-Now here is the question you need to answer. Remember, if you cannot deduce the answer from the context, respond only with the message "Couldn't find this answer" and say nothing else.
+Now here is the question you need to answer. Remember, if you cannot deduce the answer from the context, respond only with the message "Couldn't find this answer." and say nothing else.
 
 Question: {question}
 </s>
